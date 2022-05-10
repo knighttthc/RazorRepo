@@ -1,0 +1,42 @@
+﻿@page
+@model M05_UF3_P2_Template.Pages.Products.ProductModel
+@using M05_UF3_P2_Template.App_Code.Model
+@{
+}
+
+<form method="post">
+    <button type="submit" class="btn btn-primary float-right"><span class="material-icons">save</span></button>
+
+    <p>Nombre del Producto</p>
+
+    <input type="text" asp-for="product.Summary" />
+    <p>Precio</p>
+
+    <input type="number" step="any" asp-for="product.Price" />
+    <p>Desarrollador</p>
+
+    <select name="Developer" id="Developer" onchange="CambiarValores()">
+        @foreach (Company item in Model.companies)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+    <p>Editor</p>
+
+    <select name="Editor" id="Editor" onchange="CambiarValores()">
+        @foreach (Company item in Model.companies)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+    <input type="number" id="DeveloperValue" asp-for="product.Developer_id" class="Valores" style="display:none;" />
+    <input type="number" id="EditorValue" asp-for="product.Editor_id" class="Valores" style="display:none;" />
+
+    <a class="btn btn-primary float-right" asp-page="/Products/Game" asp-route-id="@Model.Game_Id" title="Edit game">
+        <span class="material-icons text-white">edit</span>
+    </a>
+</form>
+
+<script src="~/js/script.js">
+   
+</script>
